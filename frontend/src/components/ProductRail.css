@@ -1,0 +1,97 @@
+.rail-section {
+  padding: 80px 40px;
+  border-top: 1px solid var(--line);
+}
+
+.rail-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.rail-head h2 {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  font-size: clamp(26px, 3vw, 36px);
+  text-transform: uppercase;
+}
+
+.rail-head p {
+  color: var(--grey-2);
+  font-size: 13px;
+  max-width: 280px;
+}
+
+.rail {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+}
+
+.prod-card {
+  flex: 0 0 260px;
+  background: var(--grey-3);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.prod-img {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0d0d0f;
+  font-size: 48px;
+}
+
+.prod-info {
+  padding: 20px;
+}
+
+.prod-info .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--grey-2);
+  margin-bottom: 8px;
+}
+
+.prod-info h3 {
+  font-family: 'Archivo', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.prod-info .desc {
+  font-size: 12px;
+  color: var(--grey-2);
+  margin-bottom: 14px;
+}
+
+.prod-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+}
+
+.add-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
