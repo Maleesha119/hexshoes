@@ -1,9 +1,14 @@
+import Navbar from './components/Navbar'
+
 function App() {
   return (
-    <div className="landing">
-      <h1 className="brand-mark">HEXSHOES</h1>
-      <p className="tagline">Hover with Elegance, Xperience.</p>
-    </div>
+    <>
+      <Navbar />
+      <div className="landing">
+        <h1 className="brand-mark">HEXSHOES</h1>
+        <p className="tagline">Hover with Elegance, Xperience.</p>
+      </div>
+    </>
   )
 }
 
