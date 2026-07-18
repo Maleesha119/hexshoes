@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import ProductRail from './components/ProductRail'
+import AiSearch from './components/AiSearch'
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Navbar />
       <Hero />
       <ProductRail />
+      <AiSearch />
     </>
   )
 }
