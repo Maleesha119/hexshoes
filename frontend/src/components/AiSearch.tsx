@@ -1,16 +1,46 @@
 import { useState } from 'react'
 import './AiSearch.css'
 
+interface Match {
+  filename: string
+  score: number
+}
+
 function AiSearch() {
   const [fileName, setFileName] = useState<string | null>(null)
-  const [showResults, setShowResults] = useState(false)
+  const [results, setResults] = useState<Match[] | null>(null)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+  async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
     if (!file) return
+
     setFileName(file.name)
-    setShowResults(false)
-    setTimeout(() => setShowResults(true), 900)
+    setResults(null)
+    setError(null)
+    setLoading(true)
+
+    const formData = new FormData()
+    formData.append('file', file)
+
+    try {
+      const response = await fetch('http://127.0.0.1:8000/search', {
+        method: 'POST',
+        body: formData,
+      })
+
+      if (!response.ok) {
+        throw new Error('Server responded with an error')
+      }
+
+      const data = await response.json()
+      setResults(data.matches)
+    } catch (err) {
+      setError('Could not reach the AI search service. Is the server running?')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -33,7 +63,11 @@ function AiSearch() {
         <div className="demo-box">
           <label className="drop-zone" htmlFor="file-input">
             <span className="lbl">
-              {fileName ? `Analyzing ${fileName}…` : 'Drop a photo, or click to upload'}
+              {loading
+                ? `Analyzing ${fileName}…`
+                : fileName
+                ? `Last upload: ${fileName}`
+                : 'Drop a photo, or click to upload'}
             </span>
             <span className="sub">JPG or PNG</span>
             <input
@@ -45,11 +79,16 @@ function AiSearch() {
             />
           </label>
 
-          {showResults && (
+          {error && <p className="error-msg">{error}</p>}
+
+          {results && (
             <div className="results">
-              <div className="result-tile">🩴<span className="score">96.2%</span></div>
-              <div className="result-tile">🩴<span className="score">91.5%</span></div>
-              <div className="result-tile">🩴<span className="score">88.7%</span></div>
+              {results.map((match) => (
+                <div className="result-tile" key={match.filename}>
+                  🩴
+                  <span className="score">{(match.score * 100).toFixed(1)}%</span>
+                </div>
+              ))}
             </div>
           )}
         </div>
