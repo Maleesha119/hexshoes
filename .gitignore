@@ -6,3 +6,4 @@ __pycache__/
 
 ai-service/venv/
 ai-service/__pycache__/
+backend/serviceAccountKey.json
