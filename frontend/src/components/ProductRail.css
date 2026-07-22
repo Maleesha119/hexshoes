@@ -94,4 +94,14 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
+  .rail-status {
+  color: var(--grey-2);
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.rail-status.error {
+  color: #ff4d6d;
+}
 }
