@@ -1,0 +1,25 @@
+.ticker {
+  background: var(--signal);
+  color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 9px 0;
+  font-family: 'JetBrains Mono';
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+
+.ticker-track {
+  display: inline-block;
+  animation: ticker-scroll 22s linear infinite;
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.ticker-track span {
+  margin: 0 28px;
+  text-transform: uppercase;
+}
